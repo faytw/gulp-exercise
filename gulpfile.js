@@ -115,8 +115,34 @@ gulp.task('pug:prod', function() {
     return all;
 });
 
+
+//編譯 sass檔案
+gulp.task('compass',function(){
+	var stream = gulp.src(stylePath.src)
+		.pipe(compass({
+			css: stylePath.temp,
+			sass: stylePath.src_folder,
+			image: imagePath.dest,
+			style: 'expanded',
+			sourcemap: false 
+		})).on('error', function(error){
+			console.log('////////////////');
+			util.log(util.color.blue(error.message));
+			console.log('////////////////');
+			browserSync.notify(error.message, 5000);
+			stream.end();
+		})
+		.pipe(concat('app.min.css'))
+		.pipe(gulp.dest(stylePath.dest))
+		.pipe(browserSync.stream());
+	return stream;
+});
+
+
 //監看
-gulp.watch(viewPath.src,['pug:dev']);
+gulp.watch(viewPath.src, ['pug:dev']);
+gulp.watch(stylePath.src, ['compass']);
+
 
 //執行
-gulp.task('default',['pug:dev']);
+gulp.task('default', ['pug:dev','compass']);
