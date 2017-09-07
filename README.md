@@ -53,7 +53,7 @@
 browserSync.init({
 	port: 3060,
 	server:{
-		baseDir:專案的絕對路徑
+	  baseDir:專案的絕對路徑
 	}
 });
 ```
