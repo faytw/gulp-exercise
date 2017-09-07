@@ -128,7 +128,7 @@ gulp.task('compass',function(){
 			sourcemap: false 
 		})).on('error', function(error){
 			console.log('////////////////');
-			util.log(util.color.blue(error.message));
+			util.log(util.colors.blue(error.message));
 			console.log('////////////////');
 			browserSync.notify(error.message, 5000);
 			stream.end();
