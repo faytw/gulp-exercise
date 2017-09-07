@@ -25,3 +25,98 @@ var concat = require('gulp-concat');
 //清除資料夾內容
 var del = require('del');
 
+
+//設定檔案路徑
+const dirs = {
+    src: 'src',
+    dest: 'dist'
+};
+
+const viewPath = {
+    src: `${dirs.src}/view/**/*.pug`,
+    dest: `${dirs.dest}`
+}
+
+const stylePath = {
+    src: `${dirs.src}/style/**/*`,
+    src_folder: `${dirs.src}/style`,
+    temp: `${dirs.src}/temp`,
+    dest: `${dirs.dest}/css`
+};
+
+const scriptPath = {
+    src: `${dirs.src}/script/**/*.js`,
+    dest: `${dirs.dest}/js`
+};
+
+const imagePath = {
+    src: `${dirs.src}/image/*`,
+    dest: `${dirs.dest}/image`
+};
+
+const vendorPath = {
+    src: `${dirs.src}/vendor/**/*`,
+    dest: `${dirs.dest}/vendor`
+};
+
+
+//錯誤處理
+var buildOnError = function(error) {
+    console.log('****************');
+    notify.onError({
+        sound: 'pop'
+    })(error);
+
+    util.log(util.colors.blue(error.message));
+    console.log('****************');
+    browserSync.notify(error.message, 5000);
+
+    return notify(error.message);
+};
+
+
+//編譯 pug檔案
+gulp.task('pug:dev', function() {
+    var all = gulp.src(viewPath.src)
+        .pipe(plumber({
+            errorHandler: buildOnError
+        }))
+        .pipe(pug({
+            locals: {
+                dev: true,
+            },
+            pretty: true
+        }).on('error', util.log))
+        .pipe(rename({
+            extname: ".html"
+        }))
+        .pipe(gulp.dest(viewPath.dest))
+        .pipe(browserSync.stream());
+
+    return all;
+});
+
+gulp.task('pug:prod', function() {
+    var all = gulp.src(viewPath.src)
+        .pipe(plumber({
+            errorHandler: buildOnError
+        }))
+        .pipe(pug({
+            locals: {
+                prod: true,
+            },
+            pretty: true
+        }).on('error', util.log))
+        .pipe(rename({
+            extname: ".html"
+        }))
+        .pipe(gulp.dest(viewPath.dest))
+
+    return all;
+});
+
+//監看
+gulp.watch(viewPath.src,['pug:dev']);
+
+//執行
+gulp.task('default',['pug:dev']);
