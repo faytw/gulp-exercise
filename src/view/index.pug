@@ -9,8 +9,13 @@ html
 		link(rel="stylesheet",href="css/app.min.css?rev=@@hash")
 		script(src="")
 
-		body
-			.index-wrap 測試
+	body
+		if dev
+		|<script id="__bs_script__">//<![CDATA[
+		|  document.write("<script async src='http://HOST:3060/browser-sync/browser-sync-client.js?v=2.18.5'><\/script>".replace("HOST", location.hostname));
+		|//]]></script>
+
+		.index-wrap 測試
 
 		block script
 			script(src="js/app.min.js?rev=@@hash")

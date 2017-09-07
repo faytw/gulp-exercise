@@ -42,9 +42,20 @@
 ``` 
 
 ##### 3.指定任務來分別編譯 pug 和 sass 檔案
+1. pug 在開發時啟動 browser-sync 監聽變化
+2. css 在開發完成後要最小化
 
 ##### 4.指定任務來複製圖片和套件內容
 
 ##### 5.開發時要同步監看，與 browser-sync 搭配
+- 必須加上 port 和 server 設定
+```
+browserSync.init({
+	port: 3060,
+	server:{
+		baseDir:專案的絕對路徑
+	}
+});
+```
 
 ##### 6.指定 gulp 任務執行順序

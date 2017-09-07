@@ -67,7 +67,7 @@ var buildOnError = function(error) {
         sound: 'pop'
     })(error);
 
-    util.log(util.colors.blue(error.message));
+    util.log(util.colors.brown(error.message));
     console.log('****************');
     browserSync.notify(error.message, 5000);
 
@@ -118,51 +118,78 @@ gulp.task('pug:prod', function() {
 
 
 //編譯 sass檔案
-gulp.task('compass',function(){
-	var stream = gulp.src(stylePath.src)
-		.pipe(compass({
-			css: stylePath.temp,
-			sass: stylePath.src_folder,
-			image: imagePath.dest,
-			style: 'expanded',
-			sourcemap: false 
-		})).on('error', function(error){
-			console.log('////////////////');
-			util.log(util.colors.blue(error.message));
-			console.log('////////////////');
-			browserSync.notify(error.message, 5000);
-			stream.end();
-		})
-		.pipe(concat('app.min.css'))
-		.pipe(gulp.dest(stylePath.dest))
-		.pipe(browserSync.stream());
-	return stream;
+gulp.task('compass', function() {
+    var stream = gulp.src(stylePath.src)
+        .pipe(compass({
+            css: stylePath.temp,
+            sass: stylePath.src_folder,
+            image: imagePath.dest,
+            style: 'expanded',
+            sourcemap: false
+        })).on('error', function(error) {
+            console.log('////////////////');
+            util.log(util.colors.blue(error.message));
+            console.log('////////////////');
+            browserSync.notify(error.message, 5000);
+            stream.end();
+        })
+        .pipe(concat('app.min.css'))
+        .pipe(gulp.dest(stylePath.dest))
+        .pipe(browserSync.stream());
+    return stream;
 });
 
 
 //將 dist/css中的 css進行壓縮
-gulp.task('compress-css',['compass'],function(){
-	gulp.src(stylePath.dest+'/*.css')
-	.pipe(cleanCss())
-	.pipe(gulp.dest(stylePath.dest));
+gulp.task('compress-css', ['compass'], function() {
+    gulp.src(stylePath.dest + '/*.css')
+        .pipe(cleanCss())
+        .pipe(gulp.dest(stylePath.dest));
 });
 
 
 //先合併js,再壓縮輸出至 dist/js
-gulp.task('compress-js',function(){
-	return gulp.src(scriptPath.src)
-	.pipe(concat('app.min.js'))
-	.pipe(uglify().on('error',util.log))
-	.pipe(gulp.dest(scriptPath.dest))
-	.pipe(browserSync.stream());
+gulp.task('compress-js', function() {
+    return gulp.src(scriptPath.src)
+        .pipe(concat('app.min.js'))
+        .pipe(uglify().on('error', util.log))
+        .pipe(gulp.dest(scriptPath.dest))
+        .pipe(browserSync.stream());
 });
 
 
-//監看
-gulp.watch(viewPath.src, ['pug:dev']);
-gulp.watch(stylePath.src, ['compass']);
-gulp.watch(scriptPath.src,['compress-js']);
+// 複製 image後送到 dist/image
+gulp.task('image', function() {
+    gulp.src(imagesPaths.src)
+        .pipe(gulp.dest(imagesPaths.dest));
+});
 
+
+// 複製 vendor後送到 dist/vendor
+gulp.task('vendor', function() {
+    gulp.src(vendorsPaths.src)
+        .pipe(gulp.dest(vendorsPaths.dest));
+});
+
+
+//監看，加上 browser-sync
+gulp.task('watch', function() {
+    browserSync.init({
+        port: 3060,
+        open: false,
+        watchOptions: {
+            debounceDelay: 1000
+        },
+    	//加上檔案路徑
+        server: {
+            baseDir: "D:/Code/my-gulp-project/dist"
+        }
+    });
+
+    gulp.watch(viewPath.src, ['pug:dev']);
+    gulp.watch(stylePath.src, ['compass']);
+    gulp.watch(scriptPath.src, ['compress-js']);
+});
 
 //執行
-gulp.task('default', ['pug:dev','compass','compress-js']);
+gulp.task('default', ['pug:dev', 'compass', 'compress-js','watch']);
