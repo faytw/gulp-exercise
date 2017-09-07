@@ -9,7 +9,7 @@
 
 ### 建立一個 gulpfile.js 
 
-##### 1.引用 gulp plugin 
+#### 1.引用 gulp plugin 
 	- 檔案最上方的 require 的都用 var 來建立變數
 		- gulp-uglify (壓縮js檔案)
 		- gulp-concat (合併檔案)
@@ -26,7 +26,7 @@
 		- browser-sync
 		- del (node原生模組，刪除文件或資料夾)
 
-##### 2.檔案路徑設定可以用 const
+#### 2.檔案路徑設定可以用 const
 ```
 	const dirs = {
 	    src: 'src',
@@ -41,14 +41,14 @@
 	};
 ``` 
 
-##### 3.指定任務來分別編譯 pug 和 sass 檔案
-1. pug 在開發時啟動 browser-sync 監聽變化
-2. css 在開發完成後要最小化
+#### 3.指定任務來分別編譯 pug 和 sass 檔案
+###### 1. pug 在開發時啟動 browser-sync 監聽變化
+###### 2. css 在開發完成後要最小化
 
-##### 4.指定任務來複製圖片和套件內容
+#### 4.指定任務來複製圖片和套件內容
 
-##### 5.開發時要同步監看，與 browser-sync 搭配
-- 必須加上 port 和 server 設定
+#### 5.開發時要同步監看，與 browser-sync 搭配
+###### - 必須加上 port 和 server 設定
 ```
 browserSync.init({
 	port: 3060,
@@ -58,4 +58,4 @@ browserSync.init({
 });
 ```
 
-##### 6.指定 gulp 任務執行順序
+#### 6.指定 gulp 任務執行順序
