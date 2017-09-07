@@ -28,17 +28,17 @@
 
 #### 2.檔案路徑設定可以用 const
 ```
-	const dirs = {
-	    src: 'src',
-	    dest: 'dist'
-	}; 
+const dirs = {
+  src: 'src',
+  dest: 'dist'
+}; 
 
-	const stylePath = {
-	    src: `${dirs.src}/style/**/*`,
-	    src_folder: `${dirs.src}/style`,
-	    temp: `${dirs.src}/temp`,
-	    dest: `${dirs.dest}/css`
-	};
+const stylePath = {
+  src: `${dirs.src}/style/**/*`,
+  src_folder: `${dirs.src}/style`,
+  temp: `${dirs.src}/temp`,
+  dest: `${dirs.dest}/css`
+};
 ``` 
 
 #### 3.指定任務來分別編譯 pug 和 sass 檔案
