@@ -51,10 +51,10 @@
 ###### - 必須加上 port 和 server 設定
 ```
 browserSync.init({
-	port: 3060,
-	server:{
-	  baseDir:專案的絕對路徑
-	}
+  port: 3060,
+  server:{
+	baseDir:專案的絕對路徑
+  }
 });
 ```
 
