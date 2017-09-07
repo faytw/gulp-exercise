@@ -75,7 +75,7 @@ var buildOnError = function(error) {
 };
 
 
-//編譯 pug檔案
+//開發中,編譯 pug檔案
 gulp.task('pug:dev', function() {
     var all = gulp.src(viewPath.src)
         .pipe(plumber({
@@ -96,6 +96,7 @@ gulp.task('pug:dev', function() {
     return all;
 });
 
+//編譯 pug檔案
 gulp.task('pug:prod', function() {
     var all = gulp.src(viewPath.src)
         .pipe(plumber({
@@ -139,10 +140,29 @@ gulp.task('compass',function(){
 });
 
 
+//將 dist/css中的 css進行壓縮
+gulp.task('compress-css',['compass'],function(){
+	gulp.src(stylePath.dest+'/*.css')
+	.pipe(cleanCss())
+	.pipe(gulp.dest(stylePath.dest));
+});
+
+
+//先合併js,再壓縮輸出至 dist/js
+gulp.task('compress-js',function(){
+	return gulp.src(scriptPath.src)
+	.pipe(concat('app.min.js'))
+	.pipe(uglify().on('error',util.log))
+	.pipe(gulp.dest(scriptPath.dest))
+	.pipe(browserSync.stream());
+});
+
+
 //監看
 gulp.watch(viewPath.src, ['pug:dev']);
 gulp.watch(stylePath.src, ['compass']);
+gulp.watch(scriptPath.src,['compress-js']);
 
 
 //執行
-gulp.task('default', ['pug:dev','compass']);
+gulp.task('default', ['pug:dev','compass','compress-js']);
