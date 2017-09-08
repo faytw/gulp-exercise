@@ -4,12 +4,13 @@
   "author": "Fay Hsu",
   "desciption": "",
   "scripts": {
-  	"dev": "gulp"
+    "dev": "gulp",
+    "build": "gulp prod"
   },
   "devDependencies": {
     "browser-sync": "^2.18.13",
     "compass": "^0.1.1",
-     "pug": "^2.0.0-rc.4",
+    "pug": "^2.0.0-rc.4",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.8.0",

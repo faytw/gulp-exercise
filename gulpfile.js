@@ -160,15 +160,15 @@ gulp.task('compress-js', function() {
 
 // 複製 image後送到 dist/image
 gulp.task('image', function() {
-    gulp.src(imagesPaths.src)
-        .pipe(gulp.dest(imagesPaths.dest));
+    gulp.src(imagePath.src)
+        .pipe(gulp.dest(imagePath.dest));
 });
 
 
 // 複製 vendor後送到 dist/vendor
 gulp.task('vendor', function() {
-    gulp.src(vendorsPaths.src)
-        .pipe(gulp.dest(vendorsPaths.dest));
+    gulp.src(vendorPath.src)
+        .pipe(gulp.dest(vendorPath.dest));
 });
 
 
@@ -180,7 +180,7 @@ gulp.task('watch', function() {
         watchOptions: {
             debounceDelay: 1000
         },
-    	//加上檔案路徑
+        //加上檔案路徑
         server: {
             baseDir: "D:/Code/my-gulp-project/dist"
         }
@@ -191,5 +191,38 @@ gulp.task('watch', function() {
     gulp.watch(scriptPath.src, ['compress-js']);
 });
 
-//執行
-gulp.task('default', ['pug:dev', 'compass', 'compress-js','watch']);
+
+//清空 dist/view,dist/css,src/temp,dist/js,dist/image
+gulp.task('clean', function() {
+    return del([
+        viewPath.dest + '/*.html',
+        stylePath.dest + '/**/*',
+        stylePath.temp + '/**/*',
+        scriptPath.dest + '/**/*',
+        imagePath.dest + '/**/*'
+    ]);
+});
+
+
+// dist中的 html 都加上 URL版本
+gulp.task('rev-append', ['build:prod'], function() {
+    gulp.src(viewPath.dest + '/*.html')
+        .pipe(revAppend())
+        .pipe(gulp.dest(viewPath.dest));
+});
+
+
+// ************************************************* //
+//開發中
+gulp.task('build:dev', ['pug:dev', 'compass', 'compress-js', 'image', 'vendor']);
+
+//開發完成
+gulp.task('build:prod', ['pug:prod', 'compass', 'compress-css', 'compress-js', 'image', 'vendor']);
+
+//預設 npm run dev
+//基本編譯，加上 browser-sync
+gulp.task('default', ['build:dev', 'watch']);
+
+//發佈 npm run build
+//清空資料夾，重新編譯dist, URL加上版本號
+gulp.task('prod', ['clean', 'build:prod', 'rev-append']);
