@@ -1,21 +1,4 @@
-doctype html
-html
-	head
-		mata(charset="utf-8")
-		meta(name="viewport",content="width=device-width,initial-scale=1.0,user-scalable=no")
+extend layout/basic
 
-		title gulp-exercise
-
-		link(rel="stylesheet",href="css/app.min.css?rev=@@hash")
-		script(src="")
-
-	body
-		if dev
-		|<script id="__bs_script__">//<![CDATA[
-		|  document.write("<script async src='http://HOST:3060/browser-sync/browser-sync-client.js?v=2.18.5'><\/script>".replace("HOST", location.hostname));
-		|//]]></script>
-
-		.index-wrap 測試
-
-		block script
-			script(src="js/app.min.js?rev=@@hash")
+block main
+	.index-wrap 我是測試頁面
