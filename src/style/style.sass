@@ -1,3 +1,18 @@
+@import "compass/css3/box-sizing"
+@import "compass/css3/box-shadow"
+@import "compass/css3/border-radius"
+@import "compass/css3/opacity"
+@import "compass/css3/appearance"
+@import "compass/css3/transform"
+@import "compass/css3/transition"
+@import "compass/css3/flexbox"
+@import "compass/css3/images"
+@import "compass/css3/animation"
+@import "compass/css3/user-interface"
+@import "compass/utilities/general/clearfix"
+
+@import "_mixin.sass"
+
 .index-wrap
 	border: 5px solid red
 	max-width: 100%
@@ -6,3 +21,6 @@
 	margin: 0 auto
 	padding: 35px 0px
 	text-align: center
+
+	@include rwd-range(320,760)
+		background: #000

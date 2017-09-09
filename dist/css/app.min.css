@@ -1,9 +1,1 @@
-.index-wrap {
-  border: 5px solid red;
-  max-width: 100%;
-  background: blue;
-  color: #fff;
-  margin: 0 auto;
-  padding: 35px 0px;
-  text-align: center;
-}
+.index-wrap{border:5px solid red;max-width:100%;background:#00f;color:#fff;margin:0 auto;padding:35px 0;text-align:center}@media only screen and (min-width:320px) and (max-width:760px){.index-wrap{background:#000}}
