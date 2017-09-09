@@ -13,14 +13,58 @@
 
 @import "_mixin.sass"
 
-.index-wrap
-	border: 5px solid red
-	max-width: 100%
-	background: blue
-	color: #fff
-	margin: 0 auto
-	padding: 35px 0px
-	text-align: center
+$color-pink: #ffcfdf
+$color-yellow: #fefdca
+$color-green: #b0f9b5
+$color-blue-1: #a5dee5
+$color-blue-2: #ecfffb
+$color-blue-3: #07689f
 
+// common layout
+section
+	@include clearfix()
+	margin-top: 15px
+
+.container
+	max-width: 100%
+	background: $color-pink
+	margin: 0 auto
+	text-align: center
+	padding: 50px 0px
 	@include rwd-range(320,760)
 		background: #000
+
+.left-box
+	display: inline-block
+	float: left
+	background: $color-yellow
+	width: calc(100% * 3 / 12)
+	height: 150px
+	
+.right-box
+	display: inline-block
+	float: right
+	background: $color-green
+	width: calc(100% * 9 / 12)
+	height: 150px
+
+.item-wrap
+	max-width: 100%
+	background: $color-blue-1
+	padding: 35px
+
+	.item
+		width: calc(100% / 4 - 15px)
+		height: 240px
+		background: $color-blue-2
+		display: inline-block
+		margin: 15px 5px
+
+		&:nth-child(odd)
+			background: $color-blue-3
+
+		@include rwd(768)
+			width: calc(100% / 2 - 15px)
+
+		@include rwd(500)
+			width: 100% 

@@ -1,5 +1,5 @@
 @mixin rwd($value)
-	@media only screen and (max-width:#{$value})
+	@media only screen and (max-width:#{$value+px})
 		@content
 
 @mixin rwd-range($min,$max)
