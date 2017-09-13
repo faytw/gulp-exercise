@@ -1,3 +1,63 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+body {
+  font-family: "Fresca", sans-serif;
+}
+
 section {
   overflow: hidden;
   *zoom: 1;
@@ -5,11 +65,11 @@ section {
 }
 
 .container {
+  width: 1366px;
   max-width: 100%;
   background: #ffcfdf;
   margin: 0 auto;
-  text-align: center;
-  padding: 50px 0px;
+  padding: 20px 0px;
 }
 @media only screen and (min-width: 320px) and (max-width: 760px) {
   .container {
@@ -20,17 +80,26 @@ section {
 .left-box {
   display: inline-block;
   float: left;
-  background: #fefdca;
+  background: #a5dee5;
   width: calc(100% * 3 / 12);
-  height: 150px;
+}
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+  .left-box {
+    float: none;
+    width: 100%;
+  }
 }
 
 .right-box {
   display: inline-block;
   float: right;
-  background: #b0f9b5;
   width: calc(100% * 9 / 12);
-  height: 150px;
+}
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+  .right-box {
+    float: none;
+    width: 100%;
+  }
 }
 
 .item-wrap {
@@ -57,4 +126,83 @@ section {
   .item-wrap .item {
     width: 100%;
   }
+}
+
+.img-box {
+  display: inline-block;
+  overflow: hidden;
+}
+.img-box img {
+  width: 100%;
+  height: 100%;
+}
+
+.content-box {
+  background: #fefdca;
+}
+.content-box p {
+  margin: 10px;
+}
+.content-box .head {
+  padding: 10% 15% 0 15%;
+}
+.content-box .head .photo {
+  width: 120px;
+  height: 120px;
+  background: #ecfffb;
+  -moz-border-radius: 99em;
+  -webkit-border-radius: 99em;
+  border-radius: 99em;
+  margin: 0 auto;
+}
+.content-box .head p {
+  font-size: 1.2em;
+  text-align: center;
+}
+.content-box .body {
+  padding: 2% 5% 5% 15%;
+}
+@media only screen and (min-width: 769px) and (max-width: 1023px) {
+  .content-box .body {
+    padding-left: 5%;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .content-box .body {
+    padding: 0px 0px 5% 0px;
+    text-align: center;
+  }
+}
+.content-box .body ul {
+  padding-left: 40px;
+}
+@media only screen and (max-width: 1024px) {
+  .content-box .body ul {
+    padding-left: 10px;
+  }
+}
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+  .content-box .body ul {
+    padding-left: 0px;
+  }
+}
+.content-box .body ul li {
+  margin-top: 15px;
+}
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  .content-box .body ul li {
+    display: inline-block;
+    width: calc(100% * 1 / 3 - 5px);
+    vertical-align: text-top;
+  }
+}
+.content-box .body ul li i {
+  margin-right: 5px;
+}
+.content-box .body ul li p {
+  margin: 5px;
+  padding-left: 15px;
+}
+.content-box .body ul .fix-text p {
+  padding-left: 10px;
 }

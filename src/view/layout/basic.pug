@@ -9,6 +9,8 @@ html
 
 		link(rel="stylesheet",href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
 		
+		link(rel="stylesheet",href="https://fonts.googleapis.com/css?family=Fresca")
+
 		link(rel="stylesheet",href="css/app.min.css?rev=@@hash")
 
 		<!--[if (lte IE 9)]><!-->
@@ -21,8 +23,9 @@ html
 		|  document.write("<script async src='http://HOST:3060/browser-sync/browser-sync-client.js?v=2.18.5'><\/script>".replace("HOST", location.hostname));
 		|//]]></script>
 
-		main#container
-			block main
+		block header
+		block main
+		block footer
 
 		block script
 			script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js")
