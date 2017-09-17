@@ -56,6 +56,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 body {
   font-family: "Fresca", sans-serif;
+  background: #e5e5e5;
 }
 
 section {
@@ -68,14 +69,23 @@ i {
   margin-right: 5px;
 }
 
-slides {
+.slide-box {
+  position: relative;
+  display: inline-block;
+  width: 180px;
+  height: 120px;
+}
+
+.slides {
   opacity: 0;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  animation: slideImg 90s linear infinite 0s;
+  width: 180px;
+  height: 120px;
+  margin: 0 auto;
+  overflow: hidden;
+  /* animation: slideImg 90s linear infinite 0s */
 }
 
 .slide-img {
@@ -119,6 +129,19 @@ slides {
     transform: scale(1);
   }
 }
+.owl-dot {
+  width: 12px;
+  height: 12px;
+  background: #fff !important;
+  margin-right: 15px;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  border-radius: 12px;
+}
+.owl-dot:hover {
+  background: #07689f !important;
+}
+
 .container {
   width: 1366px;
   max-width: 100%;
@@ -158,77 +181,49 @@ slides {
 }
 
 .item-wrap {
+  width: calc(100% * 9 / 12);
   max-width: 100%;
-  background: #a5dee5;
+  margin: 0 auto;
   padding: 35px;
 }
+@media only screen and (max-width: 500px) {
+  .item-wrap {
+    padding: 0px;
+    width: 100%;
+  }
+}
 .item-wrap .item {
-  width: calc(100% / 4 - 15px);
   height: 240px;
   background: #ecfffb;
-  display: inline-block;
+  display: block;
   margin: 15px 5px;
 }
 .item-wrap .item:nth-child(odd) {
   background: #07689f;
 }
-@media only screen and (max-width: 768px) {
-  .item-wrap .item {
-    width: calc(100% / 2 - 15px);
-  }
-}
-@media only screen and (max-width: 500px) {
-  .item-wrap .item {
-    width: 100%;
-  }
-}
-
-.img-box {
-  display: inline-block;
-}
-.img-box img {
-  width: 100%;
-  height: 100%;
-}
 
 .content-box {
-  background: #fefde9;
+  background: #fff;
   position: absolute;
   padding: 2% 4%;
   top: 8%;
-  left: 2%;
-  opacity: 0.95;
+  left: 7%;
 }
 @media only screen and (max-width: 768px) {
   .content-box {
-    position: absolute;
+    position: relative;
     width: 100%;
-    padding: 2% 0px;
+    padding: 5% 0px;
     left: 0;
+    top: 15%;
   }
 }
-@media only screen and (max-width: 500px) {
-  .content-box {
-    opacity: 0.8;
-  }
-}
-.content-box p {
-  margin: 10px;
-}
-.content-box .head .photo {
-  width: 180px;
-  height: 180px;
-  background: #ecfffb;
-  -moz-border-radius: 99em;
-  -webkit-border-radius: 99em;
-  border-radius: 99em;
-  margin: 0 auto;
-  overflow: hidden;
-  background-image: url(../image/flower.jpg);
-  background-size: cover;
-  background-position: center center;
+.content-box .head {
+  margin-bottom: 10px;
+  text-align: center;
 }
 .content-box .head p {
+  margin-top: 10px;
   font-size: 1.2em;
   text-align: center;
 }
@@ -277,29 +272,85 @@ slides {
   right: -60px;
   bottom: 90px;
   padding: 35px 0px;
+  display: none;
 }
 @media only screen and (max-width: 768px) {
   .content-box .foot {
-    right: 0;
-  }
-}
-@media only screen and (max-width: 500px) {
-  .content-box .foot {
-    top: -15%;
+    display: block;
+    top: -24%;
     left: 0;
     right: 0;
     bottom: 0;
     text-align: center;
   }
 }
+@media only screen and (max-width: 500px) {
+  .content-box .foot {
+    top: -18%;
+  }
+}
 .content-box .foot p {
-  border: 1px solid #e5e5e5;
   background: #fff;
   opacity: 1;
   padding: 5px 10px;
+  margin-bottom: 10px;
 }
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 768px) {
   .content-box .foot p {
     display: inline-block;
   }
+}
+.content-box .foot p:hover {
+  background: #ff5200;
+  color: #fff;
+  cursor: pointer;
+}
+.content-box .foot p.active {
+  background: #359768;
+  color: #fff;
+  font-weight: 700;
+}
+
+#portfolio {
+  text-align: center;
+  padding: 50px;
+}
+@media only screen and (max-width: 1024px) {
+  #portfolio {
+    padding-top: 40px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  #portfolio {
+    padding: 5px;
+  }
+}
+#portfolio .title {
+  font-size: 1.6em;
+}
+#portfolio .description {
+  background: #fff;
+  font-size: 1.1em;
+  width: 50%;
+  line-height: 1.2em;
+  margin: 1em auto 0px auto;
+  overflow: hidden;
+  padding: 15px;
+  text-align: left;
+}
+@media only screen and (max-width: 768px) {
+  #portfolio .description {
+    width: 70%;
+  }
+}
+
+.portfolio-fixed {
+  position: fixed;
+  background: #e5e5e5;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 3;
+  margin-top: 50px;
 }

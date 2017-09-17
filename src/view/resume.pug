@@ -4,31 +4,39 @@ block header
 	
 
 block main
-	.img-box
-		slides.slide-img
-		slides.slide-img
-		slides.slide-img
-		
-		section.left-box
-			.content-box
-				.head
-					.photo
-					p.name  Fay Hsu
-					p Junior Front-End
-				.body
-					ul
-						li <i class="fa fa-book"></i>Basic Skill :
-							p HTML , Pug 
-							p CSS , Compass(Sass)
-							p Javascript(ES6)
-						li.fix-text <i class="fa fa-unlock-alt"></i>Others :
-							p Git , Gulp , Grunt
-							p Photoshop (切圖)
-						li <i class="fa fa-key"></i>Framwork :
-							p Bootstrap
-							p Vue.js
-							p React.js
-				.foot
-					p <i class="fa fa-star"></i>PORTFOLIO
-					p <i class="fa fa-star"></i>CONTACT
+	section.left-box
+		.content-box
+			.head
+				.slide-box
+					.slides.slide-img
+					.slides.slide-img
+					.slides.slide-img
+				p.name  Fay Hsu
+				p Junior Front-End
+			.body
+				ul
+					li <i class="fa fa-book"></i>Basic Skill :
+						p HTML , Pug 
+						p CSS , Compass(Sass)
+						p Javascript(ES6)
+					li.fix-text <i class="fa fa-unlock-alt"></i>Others :
+						p Git , Gulp , Grunt
+						p Photoshop (切圖)
+					li <i class="fa fa-key"></i>Framwork :
+						p Bootstrap
+						p Vue.js
+						p React.js
+			.foot
+				p.active <i class="fa fa-star"></i>HOME
+				p <i class="fa fa-star"></i>PORTFOLIO
+				p <i class="fa fa-star"></i>CONTACT
+
+	section#portfolio
+		p.title PORTFOLIO
+		p.description 2016 年 3 月開始透過書籍與網路資源自學網頁前端技術，從基本的 HTML , CSS , jQuery 入門，用 Boostrap 做出 RWD 網頁 ，目前能夠使用 Vue.js 和 React.js 來寫網頁功能 ，以及使用 Gulp , Webpack 等前端工具來協助開發。
+		ul.item-wrap.owl-carousel
+			li.item 
+			li.item 
+			li.item
+			li.item 
 		

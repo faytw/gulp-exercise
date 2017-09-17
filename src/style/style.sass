@@ -16,7 +16,7 @@
 
 $color-pink: #ffcfdf
 $color-yellow: rgb(254,253,233)
-$color-green: #b0f9b5
+$color-green-1: #b0f9b5
 $color-blue-1: #a5dee5
 $color-blue-2: #ecfffb
 $color-blue-3: #07689f
@@ -24,6 +24,7 @@ $color-blue-3: #07689f
 // common layout
 body
 	font-family: "Fresca", sans-serif
+	background: #e5e5e5
 
 section
 	@include clearfix()
@@ -33,14 +34,22 @@ i
 	margin-right: 5px
 
 //effect
-slides
+.slide-box
+	position: relative
+	display: inline-block
+	width: 180px
+	height: 120px
+
+.slides
 	opacity: 0
 	position: absolute
 	top: 0
 	left: 0
-	width: 100%
-	height: 100%
-	animation: slideImg 90s linear infinite 0s
+	width: 180px
+	height: 120px
+	margin: 0 auto
+	overflow: hidden
+	/* animation: slideImg 90s linear infinite 0s*/
 
 .slide-img
 	background-size: cover
@@ -78,6 +87,18 @@ slides
 		transform: scale(1) 
 
 
+//
+.owl-dot
+	width: 12px
+	height: 12px
+	background: #fff!important
+	margin-right: 15px
+	@include border-radius(12px)
+
+	&:hover
+		background: $color-blue-3!important
+
+
 .container
 	width: 1366px
 	max-width: 100%
@@ -108,66 +129,44 @@ slides
 		width: 100%
 
 .item-wrap
+	width: calc(100% * 9 / 12)
 	max-width: 100%
-	background: $color-blue-1
+	margin: 0 auto
 	padding: 35px
 
+	@include rwd(500)
+		padding: 0px
+		width: 100%
+
 	.item
-		width: calc(100% / 4 - 15px)
 		height: 240px
 		background: $color-blue-2
-		display: inline-block
+		display: block
 		margin: 15px 5px
 
 		&:nth-child(odd)
 			background: $color-blue-3
 
-		@include rwd(768)
-			width: calc(100% / 2 - 15px)
-
-		@include rwd(500)
-			width: 100% 
-
-.img-box
-	display: inline-block
-
-	img
-		width: 100%
-		height: 100%
-
 .content-box
-	background: $color-yellow
+	background: #fff
 	position: absolute
 	padding: 2% 4%
 	top: 8%
-	left: 2%
-	opacity: .95
+	left: 7%
 
 	@include rwd(768)
-		position: absolute
+		position: relative
 		width: 100%
-		padding: 2% 0px
+		padding: 5% 0px
 		left: 0
-
-	@include rwd(500)
-		opacity: .8
-
-	p
-		margin: 10px
+		top: 15%
 
 	.head
-		.photo
-			width: 180px
-			height: 180px
-			background: $color-blue-2
-			@include border-radius(99em)
-			margin: 0 auto
-			overflow: hidden
-			background-image: url(../image/flower.jpg)
-			background-size: cover
-			background-position: center center
+		margin-bottom: 10px
+		text-align: center
 
 		p
+			margin-top: 10px
 			font-size: 1.2em
 			text-align: center
 
@@ -208,27 +207,76 @@ slides
 		right: -60px
 		bottom: 90px
 		padding: 35px 0px
+		display: none
 
 		@include rwd(768)
-			right: 0
-
-		@include rwd(500)
-			top: -15%
+			display: block 
+			top: -24%
 			left: 0
 			right: 0
 			bottom: 0
 			text-align: center
 
+		@include rwd(500)
+			top: -18%
+
 		p
-			border: 1px solid #e5e5e5
 			background: #fff
 			opacity: 1
 			padding: 5px 10px
+			margin-bottom: 10px
 
-			@include rwd(500)
+			@include rwd(768)
 				display: inline-block
 
+			&:hover
+				background: #ff5200
+				color: #fff
+				cursor: pointer
 
-					
+		p.active
+			background: #359768
+			color: #fff
+			font-weight: 700
+
+
+#portfolio
+	text-align: center
+	padding: 50px
+
+	@include rwd(1024)
+		padding-top: 40px
+
+	@include rwd(500)
+		padding: 5px		
+
+	.title
+		font-size: 1.6em
+
+	.description
+		background: #fff
+		font-size: 1.1em
+		width: 50%
+		line-height: 1.2em
+		margin: 1em auto 0px auto
+		overflow: hidden
+		padding: 15px
+		text-align: left
+
+		@include rwd(768)
+			width: 70%
+
+.portfolio-fixed
+	position: fixed
+	background: #e5e5e5
+	top: 0
+	right: 0
+	left: 0
+	bottom: 0
+	z-index: 3
+	margin-top: 50px
+
+
+
 
 
