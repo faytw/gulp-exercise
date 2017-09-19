@@ -94,9 +94,6 @@ img
 	max-width: 100%
 	margin: 0 auto
 
-	@include rwd-range(320,760)
-		background: #000
-
 .content-width
 	width: 720px
 	max-width: 100%
@@ -191,6 +188,9 @@ header
 		position: relative
 		z-index: 2
 
+		@include rwd(500)
+			width: 100%
+
 		li
 			display: inline-block
 			margin: 5px
@@ -208,11 +208,14 @@ header
 
 #resume
 	width: 100%
-	height: 200px
+	height: auto
 	font-size: 1.4em
 
 	ul 
 		padding: 15px
+
+		@include rwd(500)
+			padding: 0
 
 		li
 			display: inline-block
@@ -220,8 +223,18 @@ header
 			padding: 10px
 			
 			&:nth-child(2)
-				border-left: 5px dotted $color-green-1
-				border-right: 5px dotted $color-green-1
+				border-left: 5px dotted #f5f5f5
+				border-right: 5px dotted #f5f5f5
+
+			@include rwd(500)
+				display: block
+				float: none
+				text-align: center
+
+				&:nth-child(2)
+					border: 0px
+					border-top: 5px dotted #f5f5f5
+					border-bottom: 5px dotted #f5f5f5
 
 
 			.content
@@ -235,6 +248,9 @@ header
 
 	.content
 		text-align: center
+	
+		@include rwd(500)
+			padding: 15px
 
 
 footer
