@@ -316,6 +316,22 @@ header ul li a:hover {
     padding: 15px;
   }
 }
+#portfolio .item {
+  color: #fff;
+  font-size: 1em;
+  padding: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#portfolio .item:hover {
+  color: #07689f;
+  transition: 0.3s;
+}
+#portfolio .item p {
+  margin-bottom: 15px;
+}
 
 footer {
   padding: 15px;
