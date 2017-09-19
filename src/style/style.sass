@@ -24,7 +24,6 @@ $color-blue-3: #07689f
 // common layout
 body
 	font-family: "Fresca", sans-serif
-	background: #e5e5e5
 
 section
 	@include clearfix()
@@ -32,6 +31,12 @@ section
 
 i 
 	margin-right: 5px
+
+img
+	background-size: cover
+	background-position: center center
+	width: 100%
+	height: 100%
 
 //effect
 .slide-box
@@ -49,12 +54,9 @@ i
 	height: 120px
 	margin: 0 auto
 	overflow: hidden
-	/* animation: slideImg 90s linear infinite 0s*/
+	animation: slideImg 90s linear infinite 0s
 
 .slide-img
-	background-size: cover
-	background-position: center center
-
 	&:first-child
 		opacity: 1
 		background-image: url(../image/elk-1.jpg)
@@ -70,44 +72,44 @@ i
 	
 @keyframes slideImg 
 	0%
-		opacity: 0
+		opacity: .8
 		transform: sacle(1)
 	5%
 		opacity: 1
 	25%
 		opacity: 1
 	35%
-		opacity: 0
+		opacity: .9
 		transform: scale(1.1)
 	70%
-		opacity: 0
+		opacity: .9
 		transform: scale(1.1)
 	100%
-		opacity: 0
+		opacity: 1
 		transform: scale(1) 
 
-
-//
-.owl-dot
-	width: 12px
-	height: 12px
-	background: #fff!important
-	margin-right: 15px
-	@include border-radius(12px)
-
-	&:hover
-		background: $color-blue-3!important
-
-
 .container
+	display: inline-block
 	width: 1366px
 	max-width: 100%
-	background: $color-pink
 	margin: 0 auto
-	padding: 20px 0px
 
 	@include rwd-range(320,760)
 		background: #000
+
+.content-width
+	width: 720px
+	max-width: 100%
+	margin: 0 auto
+
+.title
+	font-size: 2em
+	margin-bottom: 15px
+
+.desc
+	font-size: 1.2em
+	line-height: 1.2em
+	margin-bottom: 15px
 
 .left-box
 	display: inline-block
@@ -129,10 +131,8 @@ i
 		width: 100%
 
 .item-wrap
-	width: calc(100% * 9 / 12)
 	max-width: 100%
 	margin: 0 auto
-	padding: 35px
 
 	@include rwd(500)
 		padding: 0px
@@ -140,143 +140,105 @@ i
 
 	.item
 		height: 240px
-		background: $color-blue-2
+		background: $color-blue-3
 		display: block
-		margin: 15px 5px
 
-		&:nth-child(odd)
-			background: $color-blue-3
+		&:hover
+			background: $color-blue-2
+			cursor: pointer
 
-.content-box
-	background: #fff
-	position: absolute
-	padding: 2% 4%
-	top: 8%
-	left: 7%
 
-	@include rwd(768)
-		position: relative
-		width: 100%
-		padding: 5% 0px
-		left: 0
-		top: 15%
+header
+	padding: 15px
+	text-align: center
+	display: flex
+	flex-direction: column
+	justify-content: center
+	color: #fff
+	min-height: 65vh
 
-	.head
-		margin-bottom: 10px
-		text-align: center
-
-		p
-			margin-top: 10px
-			font-size: 1.2em
-			text-align: center
-
-	.body
-		position: relative
-
-		@include rwd(500)
-			text-align: center
-
-		ul
-			@include rwd-range(600,768)
-				padding: 0px 15% 0px 20%
-
-			li
-				margin-top: 15px
-
-				@include rwd-range(600,768)
-					display: inline-block
-					width: calc(100% * 1 / 3 - 5px)
-					vertical-align: text-top
-
-				p
-					margin: 5px
-					padding-left: 15px
-
-					@include rwd(500)
-						padding-left: 0px
-
-			.fix-text
-				p
-					padding-left: 10px
-
-					@include rwd(500)
-						padding-left: 0px
-
-	.foot
+	.header-img
 		position: absolute
-		right: -60px
-		bottom: 90px
-		padding: 35px 0px
-		display: none
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		z-index: 1
+		background-image: url(../image/elk-3.jpg)
+		background-repeat: no-repeat
+		background-size: cover
+		background-position: center center
+		max-height: 65vh
+		animation: slideImg 30s linear infinite 0s
 
-		@include rwd(768)
-			display: block 
-			top: -24%
-			left: 0
+		&:before
+			content: ""
+			position: absolute
+			top: 0
 			right: 0
 			bottom: 0
-			text-align: center
+			left: 0
+			z-index: 2
+			background: #000
+			opacity: .3
+	p
+		position: relative
+		z-index: 2
 
-		@include rwd(500)
-			top: -18%
+	ul
+		width: 70%
+		margin: 0 auto
+		position: relative
+		z-index: 2
 
-		p
-			background: #fff
-			opacity: 1
-			padding: 5px 10px
-			margin-bottom: 10px
+		li
+			display: inline-block
+			margin: 5px
+			width: calc(100% / 3 - 15px)
 
-			@include rwd(768)
-				display: inline-block
+			a
+				display: block
+				width: 100%
+				height: 32px
+				line-height: 32px
+				border: 1px solid #fff
 
-			&:hover
-				background: #ff5200
-				color: #fff
-				cursor: pointer
+				&:hover
+					cursor: pointer
 
-		p.active
-			background: #359768
-			color: #fff
-			font-weight: 700
+#resume
+	width: 100%
+	height: 200px
+	font-size: 1.4em
+
+	ul 
+		padding: 15px
+
+		li
+			display: inline-block
+			float: left
+			padding: 10px
+			
+			&:nth-child(2)
+				border-left: 5px dotted $color-green-1
+				border-right: 5px dotted $color-green-1
+
+
+			.content
+				padding: 15px
+				padding-left: 25px
 
 
 #portfolio
+	width: 100%
+	height: auto
+
+	.content
+		text-align: center
+
+
+footer
+	padding: 15px
 	text-align: center
-	padding: 50px
-
-	@include rwd(1024)
-		padding-top: 40px
-
-	@include rwd(500)
-		padding: 5px		
-
-	.title
-		font-size: 1.6em
-
-	.description
-		background: #fff
-		font-size: 1.1em
-		width: 50%
-		line-height: 1.2em
-		margin: 1em auto 0px auto
-		overflow: hidden
-		padding: 15px
-		text-align: left
-
-		@include rwd(768)
-			width: 70%
-
-.portfolio-fixed
-	position: fixed
-	background: #e5e5e5
-	top: 0
-	right: 0
-	left: 0
-	bottom: 0
-	z-index: 3
-	margin-top: 50px
-
-
-
 
 

@@ -1,42 +1,57 @@
 extend layout/basic
 
 block header
-	
+	header
+		.container
+			.content-width
+				.header-img
+				p.title FAY'S PLAYGROUND
+				p.desc Learning is fun. Practice makes perfect.
+				p.desc I am a junior Front End.
+				ul
+					li
+						a RESUME
+					li 
+						a PORTFOLIO
+					li 
+						a INTEREST
 
 block main
-	section.left-box
-		.content-box
-			.head
-				.slide-box
-					.slides.slide-img
-					.slides.slide-img
-					.slides.slide-img
-				p.name  Fay Hsu
-				p Junior Front-End
-			.body
-				ul
-					li <i class="fa fa-book"></i>Basic Skill :
+	section#resume
+		.content-width
+			ul
+				li <i class="fa fa-book"></i>Basic Skill :
+					.content
 						p HTML , Pug 
-						p CSS , Compass(Sass)
+						p CSS3 , Compass(Sass)
 						p Javascript(ES6)
-					li.fix-text <i class="fa fa-unlock-alt"></i>Others :
-						p Git , Gulp , Grunt
-						p Photoshop (切圖)
-					li <i class="fa fa-key"></i>Framwork :
+				li <i class="fa fa-book"></i>Others :
+					.content
+						p Git , Gulp , Webpack
+						p Photoshop
+				li <i class="fa fa-book"></i>Framwork :
+					.content
 						p Bootstrap
 						p Vue.js
 						p React.js
-			.foot
-				p.active <i class="fa fa-star"></i>HOME
-				p <i class="fa fa-star"></i>PORTFOLIO
-				p <i class="fa fa-star"></i>CONTACT
+
+	hr
 
 	section#portfolio
-		p.title PORTFOLIO
-		p.description 2016 年 3 月開始透過書籍與網路資源自學網頁前端技術，從基本的 HTML , CSS , jQuery 入門，用 Boostrap 做出 RWD 網頁 ，目前能夠使用 Vue.js 和 React.js 來寫網頁功能 ，以及使用 Gulp , Webpack 等前端工具來協助開發。
-		ul.item-wrap.owl-carousel
-			li.item 
-			li.item 
-			li.item
-			li.item 
-		
+		.content-width
+			.content
+				p.title PORTFOLIO
+				p.desc 2016 年 3 月開始透過書籍與網路資源自學網頁前端技術，從基本的 HTML , CSS , jQuery 入門，用 Boostrap 做出 RWD 網頁。目前能夠使用 Vue.js 和 React.js 來寫網頁功能 ，以及使用 Gulp , Webpack 等前端工具來協助開發。
+			ul.item-wrap.owl-carousel
+				li.item 
+				li.item 
+				li.item
+				li.item 
+
+	hr
+
+block footer
+	footer
+		.container
+			.content-width
+				p Copyright © Fay's Playground 2017
